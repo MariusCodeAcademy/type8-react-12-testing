@@ -15,22 +15,38 @@ it('renders title from props', () => {
   expect(headerEl).toBeInTheDocument();
 });
 
-// it('should rendder a heading', () => {
+it('should rendder a heading', () => {
+  // Arrange
+  render(<Header title='Monday todos' />);
+
+  // seacrha
+  const headingEl = screen.getByRole('heading', { name: /monday/i });
+  // Assert
+  expect(headingEl).toBeInTheDocument();
+});
+
+// it('should render 2 headings', () => {
 //   // Arrange
 //   render(<Header title='todos' />);
 
 //   // seacrh
-//   const headingEl = screen.getByRole('heading');
+//   const headingElArr = screen.getAllByRole('heading');
 //   // Assert
-//   expect(headingEl).toBeInTheDocument();
+//   expect(headingElArr).toHaveLength(2);
 // });
 
-it('should render 2 headings', () => {
-  // Arrange
-  render(<Header title='todos' />);
+it('should render custom div whith id our-div', () => {
+  render(<Header />);
+  const divEl = screen.getByTestId('our-div');
+  expect(divEl).toBeInTheDocument();
+});
 
-  // seacrh
-  const headingElArr = screen.getAllByRole('heading');
+it('not render props differently', () => {
+  // Arrange
+  render(<Header title='monday' />);
+  // const headerEl = screen.getByText(/testing123/i);
+  // Act
+  const headerEl = screen.queryByText('tuesday');
   // Assert
-  expect(headingElArr).toHaveLength(2);
+  expect(headerEl).not.toBeInTheDocument();
 });
