@@ -29,6 +29,9 @@ it('it should not render tasks if only o task', () => {
   expect(numOfTasksEl).not.toBeInTheDocument();
 });
 
-// it should render 10 tasks left
-
-// it should not render 'tasks' if numberOfIncompleteTasks === 1
+it('1 task should be visible', () => {
+  // Arrange
+  render(<TodoFooterWithRouter numberOfIncompleteTasks={1} />);
+  const numOfTasksEl = screen.getByText('1 task left');
+  expect(numOfTasksEl).toBeVisible();
+});
