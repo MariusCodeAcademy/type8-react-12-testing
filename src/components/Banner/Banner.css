@@ -1,0 +1,16 @@
+.banner {
+  height: 35vh;
+  background-image: linear-gradient(
+    to right,
+    rgba(34, 35, 34, 0.794),
+    rgba(34, 35, 34, 0.794),
+    rgba(34, 35, 34, 0.794)
+  );
+
+  background-position: center;
+}
+
+.banner-img {
+  height: 100%;
+  width: 100%;
+}
