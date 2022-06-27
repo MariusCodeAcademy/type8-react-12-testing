@@ -15,6 +15,20 @@ it('it should render 1 task left', () => {
   expect(numOfTasksEl).toBeInTheDocument();
 });
 
+it('it should render 10 tasks left', () => {
+  // Arrange
+  render(<TodoFooterWithRouter numberOfIncompleteTasks={10} />);
+  const numOfTasksEl = screen.getByText(/10 tasks left/i);
+  expect(numOfTasksEl).toBeInTheDocument();
+});
+
+it('it should not render tasks if only o task', () => {
+  // Arrange
+  render(<TodoFooterWithRouter numberOfIncompleteTasks={1} />);
+  const numOfTasksEl = screen.queryByText(/tasks/i);
+  expect(numOfTasksEl).not.toBeInTheDocument();
+});
+
 // it should render 10 tasks left
 
 // it should not render 'tasks' if numberOfIncompleteTasks === 1
