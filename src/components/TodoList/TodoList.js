@@ -29,6 +29,8 @@ function TodoList({ todos, setTodos }) {
         <div>
           {todos.map((todo, index) => (
             <div
+              key={todo.id}
+              data-testid='single-todo'
               className={`todo-item ${todo.completed && 'todo-item-active'}`}
               onClick={() => updateTask(todo.id)}
             >
