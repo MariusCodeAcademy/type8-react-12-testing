@@ -37,3 +37,10 @@ it('should work with multiple todos', () => {
 });
 
 // it should render diffenere class when clicked on todo
+it('it should render "todo-item-active" class when clicked on todo', () => {
+  render(<TodoWithRouter />);
+  addTasks(['bubble gum']);
+  const divEl = screen.getByTestId('single-todo');
+  fireEvent.click(divEl);
+  expect(divEl).toHaveClass('todo-item-active');
+});
