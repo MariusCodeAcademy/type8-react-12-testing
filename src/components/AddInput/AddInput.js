@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddInput.css';
 import { v4 } from 'uuid';
-import TodoList from '../TodoList/TodoList';
+// import TodoList from '../TodoList/TodoList';
 
 function AddInput({ setTodos, todos }) {
   const [todo, setTodo] = useState('');
