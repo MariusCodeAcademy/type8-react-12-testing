@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import FollowersList from './FollowersList';
 import { BrowserRouter } from 'react-router-dom';
 import { rest } from 'msw';
@@ -40,7 +40,11 @@ const FollowersListWithRouter = (args) => (
 // it should render first item
 it('should render first item', async () => {
   render(<FollowersListWithRouter />);
-  const firstFollower = await screen.findByTestId('follower-1');
+  let firstFollower;
+  await waitFor(() => {
+    firstFollower = screen.getByTestId('follower-1');
+  });
+
   expect(firstFollower).toBeInTheDocument();
 });
 
